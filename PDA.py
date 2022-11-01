@@ -1,3 +1,7 @@
+############################################################
+#    pda value      0      1     2     3     4     5    6  #
+# structure type   other  fcc   ISF   HCP   ESF   TB   BCC #
+############################################################
 from ovito.data import *
 import numpy as np
 def modify(frame, data):
@@ -49,9 +53,9 @@ def modify(frame, data):
         yield(index / data.particles.count)
         if data.particles['Structure Type'][index] == 2:
             HCP(index)
-        elif data.particles['Structure Type'][index] == 0:
-            pda[index] = 0
         elif data.particles['Structure Type'][index] == 1:
             pda[index] = 1
+        elif data.particles['Structure Type'][index] == 3:
+            pda[index] = 6
         else:
             pda[index] = 0
